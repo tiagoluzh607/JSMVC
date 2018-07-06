@@ -20,12 +20,9 @@ class NegociacaoController{
     adiciona(event){
         event.preventDefault(); // tira o comportamento default do botao
         
-        let data = new Date(
-                ...this._inputData.value // os tres pontos quer dizer que este array de tres posicoes cada posicao vai para um parametro do construtor de date
-                .split('-')
-                .map((item, indice) => item - indice % 2) //Arrow  function já faz o retorno automatico
-                
-        );
+        let dateHelper = new DateHelper()
+        ;
+        let data = dateHelper.textoParaData(this._inputData.value);
         
        let negociacao = new Negociacao(
             //new Date (this._inputData.value.replace(/-/g,',')), // a data esta em formato Date porem do html vem uma string nesse formato yyyy-mm-dd e para criarmos uma data precisamos subtituir "-" por "," para usar no construtor de date
@@ -36,6 +33,8 @@ class NegociacaoController{
         
         console.log(negociacao);
         
+        let diaMesAno = dateHelper.dataParaTexto(negociacao.data);
+        console.log(diaMesAno);
         
     }
 }
