@@ -4,10 +4,15 @@
  * and open the template in the editor.
  */
 
-class MensagemView extends View{
-     
-    _template(model){
-        return model.texto ? `<p class="alert alert-info">${model.texto}</p>` : `<p></p>`;
+class View{
+    
+    
+    constructor(elemento){
+        this._elemento = elemento;
+    }
+        
+    update(model){
+        this._elemento.innerHTML = this._template(model);
     }
     
 }
