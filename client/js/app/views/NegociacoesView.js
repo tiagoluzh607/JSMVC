@@ -11,7 +11,7 @@ class NegociacoesView{
     
     
     
-    _template(){
+    _template(model){
                 
         return `
         <table class="table table-hover table-bordered">
@@ -25,6 +25,18 @@ class NegociacoesView{
             </thead>
 
             <tbody>
+                ${model.negociacoes.map(n => {
+                    
+                    return `
+                            <tr>
+                                <td>${DateHelper.dataParaTexto(n.data)}</td>
+                                <td>${n.quantidade}</td>
+                                <td>${n.valor}</td>
+                                <td>${n.volume}</td>
+                            </tr>
+                            `;
+                    
+                }).join('') /*retornar uma string só com os elementos strings concatenados*/}
             </tbody>
 
             <tfoot>
@@ -34,8 +46,9 @@ class NegociacoesView{
         
     }
     
-    update(){
-        this._elemento.innerHTML = this._template();
+    update(model){
+        
+        this._elemento.innerHTML = this._template(model);
     }
     
 }
