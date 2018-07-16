@@ -25,18 +25,16 @@ class NegociacoesView{
             </thead>
 
             <tbody>
-                ${model.negociacoes.map(n => {
-                    
-                    return `
-                            <tr>
-                                <td>${DateHelper.dataParaTexto(n.data)}</td>
-                                <td>${n.quantidade}</td>
-                                <td>${n.valor}</td>
-                                <td>${n.volume}</td>
-                            </tr>
-                            `;
-                    
-                }).join('') /*retornar uma string só com os elementos strings concatenados*/}
+                ${model.negociacoes.map(n =>        
+                    `
+                        <tr>
+                            <td>${DateHelper.dataParaTexto(n.data)}</td>
+                            <td>${n.quantidade}</td>
+                            <td>${n.valor}</td>
+                            <td>${n.volume}</td>
+                        </tr>
+                    `              
+                ).join('')}
             </tbody>
 
             <tfoot>
