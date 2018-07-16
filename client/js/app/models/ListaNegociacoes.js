@@ -16,6 +16,6 @@ class ListaNegociacoes{
     }
     
     get negociacoes(){
-        return this._negociacoes;
+        return [].concat(this._negociacoes); //retornando uma cópia da lista para o programador não conseguir alterar a lista de fora da classe
     }
 }
