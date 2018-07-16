@@ -7,8 +7,14 @@
 
 class DateHelper{
     
+    constructor(){
+        throw new Error('DateHelper não pode ser instanciada, DateHelper not is stancied');
+    }
     
-    textoParaData(texto){
+    static textoParaData(texto){
+        
+        if(!/\d{4}-\d{2}-\d{2}/.test(texto)) //expressao regular para testar se esta no formato aaaa-mm-dd
+            throw new Error ('Deve estar no formato aaa-mm-dd');
         
         return new Date( 
                ...texto // Atribui a resposta aos tres parametros da funcao
@@ -17,12 +23,9 @@ class DateHelper{
         );
     }
     
-    dataParaTexto(data){
+    static dataParaTexto(data){
         
-        return  data.getDate() 
-                + "/" + (data.getMonth() + 1)
-                + "/" + data.getFullYear();
-        
+        return  `${data.getDate()}/${data.getMonth()+1}/${data.getFullYear()}`; //sinal ` faz uma concatenação de string insplicitamente
     }
     
 }
